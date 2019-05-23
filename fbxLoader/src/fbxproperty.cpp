@@ -98,7 +98,7 @@ FBXProperty::FBXProperty(std::ifstream &input)
             if(decompressedBuffer == NULL) throw std::string("Malloc failed");
             BufferAutoFree baf(decompressedBuffer);
 
-			uint8_t* compressedBuffer = new uint8_t[compressedLength]; // memory leak
+			uint8_t* compressedBuffer = new uint8_t[compressedLength];
 
             reader.read((char*)compressedBuffer, compressedLength);
 			
