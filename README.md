@@ -12,6 +12,8 @@ so i changed for example
 `uint8_t compressedBuffer[compressedLength];` to `uint8_t* compressedBuffer = new uint8_t[compressedLength];`
 
 and at the end of the function i've added `delete[]compressedBuffer;`
+
+
 ---
 then I  included zlib via vspkg
 
