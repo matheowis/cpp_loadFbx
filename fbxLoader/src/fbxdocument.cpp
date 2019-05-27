@@ -297,4 +297,18 @@ void FBXDocument::print()
     cout << "\n  ]\n}" << endl;
 }
 
+void FBXDocument::printGeometry()
+{
+	cout << "{\n";
+	cout << "  \"version\": " << getVersion() << ",\n";
+	cout << "  \"children\": [\n";
+	//bool hasPrev = false;
+	for (auto node : nodes) {
+		//if (hasPrev) cout << ",\n";
+		node.printGeometry("    ",0);
+		//hasPrev = true;
+	}
+	cout << "\n  ]\n}" << endl;
+}
+
 } // namespace fbx

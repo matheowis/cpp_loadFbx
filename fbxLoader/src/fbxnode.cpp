@@ -122,6 +122,57 @@ void FBXNode::print(std::string prefix)
 
 }
 
+void FBXNode::printGeometry(std::string prefix, int depth)
+{
+	if (depth == 0 && name != "Objects") {
+		return;
+	}
+	else if (
+		depth == 2 
+		&&  name != "Vertices"
+		&&  name != "PolygonVertexIndex"
+		&&  name != "LayerElementNormal"
+		&&  name != "LayerElementUV"
+		) {
+		return;
+	}
+	else if (
+		depth == 3
+		&& name != "Normals"
+		&& name != "UV"
+		&& name != "UVIndex"
+		) {
+		return;
+	}
+	cout << prefix << "{ \"name\": \"" << name << "\"" << (properties.size() + children.size() > 0 ? ",\n" : "\n");
+	if (properties.size() > 0) {
+		cout << prefix << "  \"properties\": [\n";
+		bool hasPrev = false;
+		for (FBXProperty prop : properties) {
+			if (hasPrev) cout << ",\n";
+			cout << prefix << "    { \"type\": \"" << prop.getType() << "\", \"value\": " << prop.to_string() << " }";
+			hasPrev = true;
+		}
+		cout << "\n";
+		cout << prefix << "  ]" << (children.size() > 0 ? ",\n" : "\n");
+
+	}
+
+	if (children.size() > 0) {
+		cout << prefix << "  \"children\": [\n";
+		bool hasPrev = false;
+		for (FBXNode node : children) {
+			if (hasPrev) cout << ",\n";
+			node.printGeometry(prefix + "    ", depth + 1);
+			hasPrev = true;
+		}
+		cout << "\n";
+		cout << prefix << "  ]\n";
+	}
+
+	cout << prefix << "}";
+}
+
 bool FBXNode::isNull()
 {
     return children.size() == 0

@@ -16,7 +16,8 @@ int main(int argc, char** argv)
 		doc.read(fileName);
 		std::cout << "Read " << std::endl;
 
-		doc.print();
+		//doc.print();
+		doc.printGeometry();
 		std::cout << "Printed " << std::endl;
 
 	}
