@@ -84,7 +84,7 @@ namespace fbx {
 
 		bytes = 13 + name.length() + propertyListLength;
 
-		for (auto prop : properties) prop.write(output);
+		for (auto prop : properties) prop.write(output); // properties[0] == "C": 
 		for (auto child : children) bytes += child.write(output, start_offset + bytes);
 
 		return bytes;

@@ -9,7 +9,7 @@ using namespace fbx;
 int main(int argc, char** argv)
 {
 	std::string fileName = "models/piramidMulti.fbx";
-	std::string newfileName = "models/newPiramidMulti.fbx";
+	std::string newfileName = "models/newPiramidMulti.FBX";
 
 	try {
 		fbx::FBXDocument doc;

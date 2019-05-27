@@ -133,7 +133,8 @@ void FBXProperty::write(std::ofstream &output)
     if(type == 'Y') {
         writer.write(value.i16);
     } else if(type == 'C') {
-        writer.write((uint8_t)(value.boolean ? 1 : 0));
+        //writer.write((uint8_t)(value.boolean ? 1 : 0));
+		writer.write((uint8_t)(value.boolean ? 0x54 : 0x46));
     } else if(type == 'I') {
         writer.write(value.i32);
     } else if(type == 'F') {
