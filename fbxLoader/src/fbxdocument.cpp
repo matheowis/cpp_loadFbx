@@ -301,14 +301,11 @@ void FBXDocument::printGeometry()
 {
 	cout << "{\n";
 	cout << "  \"version\": " << getVersion() << ",\n";
-	cout << "  \"children\": [\n";
-	//bool hasPrev = false;
+	cout << "  \"objects\": [\n";
 	for (auto node : nodes) {
-		//if (hasPrev) cout << ",\n";
-		node.printGeometry("    ",0);
-		//hasPrev = true;
+		node.printGeometry("    ");
 	}
-	cout << "\n  ]\n}" << endl;
+	cout << "  ]\n}" << endl;
 }
 
 } // namespace fbx
