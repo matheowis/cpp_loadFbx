@@ -139,52 +139,24 @@ namespace fbx {
 			|| name == "UV"
 			|| name == "UVIndex"
 			);
+
 		bool indent = (
 			name == "Geometry"
 			|| name == "Model"
 			);
+
 		if (correctName && properties.size() > 0) {
-			cout << prefix << name << ": " << properties[0].to_string() << "\n";
+			cout << prefix + "\"" << name << "\": " << properties[0].to_string() << ",\n";
 		}
 		else {
 			if (indent && properties.size() > 1) {
-				cout << prefix + "    " << name << ": " << properties[1].to_string() << "\n";
+				cout << prefix + "    \"" << name << "\": " << properties[1].to_string() << ",\n";
 				doRecursion(prefix + "    ");
 			}
 			else {
 				doRecursion(prefix);
 			}
 		} 
-		
-		//cout << prefix << "{ \"name\": \"" << name << "\"" << (properties.size() + children.size() > 0 ? ",\n" : "\n");
-
-		//cout << prefix << "{ \"name\": \"" << name << "\"" << (properties.size() + children.size() > 0 ? ",\n" : "\n");
-		//if (properties.size() > 0) {
-		//	cout << prefix << "  \"properties\": [\n";
-		//	bool hasPrev = false;
-		//	for (FBXProperty prop : properties) {
-		//		if (hasPrev) cout << ",\n";
-		//		cout << prefix << "    { \"type\": \"" << prop.getType() << "\", \"value\": " << prop.to_string() << " }";
-		//		hasPrev = true;
-		//	}
-		//	cout << "\n";
-		//	cout << prefix << "  ]" << (children.size() > 0 ? ",\n" : "\n");
-
-		//}
-
-		//if (children.size() > 0) {
-		//	cout << prefix << "  \"children\": [\n";
-		//	bool hasPrev = false;
-		//	for (FBXNode node : children) {
-		//		if (hasPrev) cout << ",\n";
-		//		node.printGeometry(prefix + "    ", depth + 1);
-		//		hasPrev = true;
-		//	}
-		//	cout << "\n";
-		//	cout << prefix << "  ]\n";
-		//}
-
-		//cout << prefix << "}";
 	}
 
 	bool FBXNode::isNull()

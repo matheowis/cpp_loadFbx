@@ -8,7 +8,8 @@ using namespace fbx;
 
 int main(int argc, char** argv)
 {
-	std::string fileName = "models/piramid.fbx";
+	std::string fileName = "models/newPiramidMulti.fbx";
+	//std::string newfileName = "models/newPiramidMulti.fbx";
 
 	try {
 		fbx::FBXDocument doc;
@@ -19,6 +20,9 @@ int main(int argc, char** argv)
 		//doc.print();
 		doc.printGeometry();
 		std::cout << "Printed " << std::endl;
+
+		//doc.write(newfileName);
+		std::cout << "Saved " << std::endl;
 
 	}
 	catch (std::string e) {
